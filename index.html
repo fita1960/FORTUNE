@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dice</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <style>
+    #number {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      padding-top: 10px;
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="border my-5 py-5">
+            <div class="text-center m-5">
+                <p class="display-5 lead">click the button to see your fortune</p>
+             </div>
+             <div class="d-flex align-items-center justify-content-center">
+                <p id="number"></p>
+              </div>
+            <div class="text-center my-5">
+                <button class="btn btn-success" onclick="generateNumFortune()">ROLL</button>
+            </div>
+            <div class="text-center">
+                <p class="lead" id="fortune"></p>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script>
+        function generateNumFortune() {
+        // Get the dice element
+        var number = document.getElementById('number');
+        // Get the fortune element
+        var fortune = document.getElementById('fortune');
+        // Generate a random number between 1 and 6
+        var randomNumber = Math.floor(Math.random() * 6) + 1;
+        // Update the content with the generated number
+        number.innerHTML = randomNumber;
+
+        // Array of fortune lines
+        var fortunes = [
+            "Good things will come your way. Maybe a lotto jackpot?",
+            "Expect the unexpected. Be careful!",
+            "A new opportunity will arise soon.",
+            "Your hard work will pay off. A big project will come!",
+            "Stay positive. I can feel good fortune is near!",
+            "You are destined to find tru love."
+        ];
+
+        // Variable to store the fortune line
+        var fortuneLine = ""; 
+
+        // Assignment of fortune to numbers
+        switch (randomNumber) {
+            case 1:
+            fortuneLine = fortunes[0];
+            break;
+            case 2:
+            fortuneLine = fortunes[1];
+            break;
+            case 3:
+            fortuneLine = fortunes[2];
+            break;
+            case 4:
+            fortuneLine = fortunes[3];
+            break;
+            case 5:
+            fortuneLine = fortunes[4];
+            break;
+            case 6:
+            fortuneLine = fortunes[5];
+            break;
+        }
+
+         // Display countdown before showing the fortune
+            setTimeout(function() {
+                fortune.innerHTML = "Generating fortune in 3...";
+                setTimeout(function() {
+                fortune.innerHTML = "Generating fortune in 2...";
+                setTimeout(function() {
+                    fortune.innerHTML = "Generating fortune in 1...";
+                    setTimeout(function() {
+                    // Display the selected fortune
+                    fortune.innerHTML = fortuneLine; 
+                    }, 1000);
+                }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
